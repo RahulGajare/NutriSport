@@ -15,7 +15,6 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             installSplashScreen()
-            App()
         }
     }
 }
@@ -23,5 +22,5 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun AppAndroidPreview() {
-    App()
+
 }
