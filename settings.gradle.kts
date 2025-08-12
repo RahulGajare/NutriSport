@@ -27,6 +27,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+include(":feature:auth")
 
 include(":shared")
 include(":composeApp")
