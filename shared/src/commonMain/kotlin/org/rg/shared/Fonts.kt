@@ -8,10 +8,12 @@ import androidx.compose.ui.unit.sp
 import nutrisport.shared.generated.resources.Res
 import nutrisport.shared.generated.resources.bebas_neue_regular
 import nutrisport.shared.generated.resources.roboto_condensed_medium
+import org.jetbrains.compose.resources.Font
 
 
 @Composable
 fun BebasNeueFont() = FontFamily(
+
     Font(Res.font.bebas_neue_regular)
 )
 
