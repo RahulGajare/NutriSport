@@ -1,9 +1,8 @@
 package org.rg.auth.component
 
-import BorderIdle
 import IconSecondary
 import Resources
-import Surface
+import SurfaceDarker
 import SurfaceLighter
 import TextPrimary
 import androidx.compose.animation.AnimatedContent
@@ -47,7 +46,7 @@ fun GoogleButton(
     icon : DrawableResource = Resources.Image.GoogleLogo,
     shape : Shape = RoundedCornerShape(size = 99.dp),
     backgroundcolor : Color = SurfaceLighter,
-    borderColor : Color = BorderIdle,
+    borderColor : Color = SurfaceDarker,
     progessIndicatorColor: Color= IconSecondary,
     onClick : () ->Unit
     )

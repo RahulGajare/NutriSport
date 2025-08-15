@@ -12,12 +12,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.mmk.kmpauth.firebase.google.GoogleButtonUiContainerFirebase
 import org.rg.auth.component.GoogleButton
 import org.rg.shared.Alpha
 import org.rg.shared.BebasNeueFont
@@ -28,6 +32,8 @@ import rememberMessageBarState
 fun AuthScreen()
 {
     var messageBarState = rememberMessageBarState()
+    var loadingState by remember { mutableStateOf(false) }
+
     Scaffold { padding ->
 
         ContentWithMessageBar(
@@ -64,9 +70,44 @@ fun AuthScreen()
                     )
 
                 }
+                GoogleButtonUiContainerFirebase(
+                    linkAccount = false,
+                    onResult = {result ->
 
-                GoogleButton(loading = true, onClick = {}
-                )
+                        loadingState = false
+                        result.onSuccess { user ->
+
+                            messageBarState.addSuccess("Authentecation Successful")
+
+
+                        }.onFailure {error->
+
+                            if(error.message?.contains("A network error") == true){
+                                messageBarState.addSuccess("A network error")
+                            }
+                            else if(error.message?.contains("Idtoken is null") ==  true){
+                                messageBarState.addSuccess("Idtoken is null")
+                            }
+                            else{
+                                messageBarState.addError(error.message ?: "Unknown")
+                            }
+                            loadingState = false
+
+
+
+                        }
+
+                    }
+                ){
+                    GoogleButton(loading = loadingState, onClick = {
+                        loadingState = true
+                        this@GoogleButtonUiContainerFirebase.onClick()
+
+                    }
+                    )
+                }
+
+
 
             }
 
