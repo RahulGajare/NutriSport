@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import org.rg.auth.AuthScreen
 import org.rg.shared.navigation.Screen
 
+
 @Composable
 fun SetupNavGraph(startDestination : Screen =  Screen.AuthScreen){
 
