@@ -44,6 +44,9 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
+            implementation(libs.compose.navigation)
+            implementation(libs.kotlinx.serialization)
+
             implementation(project(":feature:auth"))
         }
         commonTest.dependencies {

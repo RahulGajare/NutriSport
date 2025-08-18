@@ -2,8 +2,11 @@ package org.rg.auth
 
 import ContentWithMessageBar
 import Surface
+import SurfaceBrand
+import SurfaceError
 import TextPrimary
 import TextSecondary
+import TextWhite
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -38,6 +41,10 @@ fun AuthScreen()
 
         ContentWithMessageBar(
             contentBackgroundColor = Surface,
+            errorContainerColor = SurfaceError,
+            errorContentColor = TextWhite,
+            successContainerColor = SurfaceBrand,
+            successContentColor = TextPrimary,
             modifier = Modifier
                 .padding(top = padding.calculateTopPadding(),
                     bottom = padding.calculateBottomPadding()),
