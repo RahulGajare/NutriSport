@@ -25,6 +25,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.mmk.kmpauth.firebase.google.GoogleButtonUiContainerFirebase
+import org.koin.compose.viewmodel.koinViewModel
 import org.rg.auth.component.GoogleButton
 import org.rg.shared.Alpha
 import org.rg.shared.BebasNeueFont
@@ -34,6 +35,7 @@ import rememberMessageBarState
 @Composable
 fun AuthScreen()
 {
+    val viewModel = koinViewModel<AuthViewModel>()
     var messageBarState = rememberMessageBarState()
     var loadingState by remember { mutableStateOf(false) }
 
