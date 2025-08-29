@@ -1,11 +1,14 @@
 import dev.gitlive.firebase.Firebase
 import dev.gitlive.firebase.auth.FirebaseUser
+import dev.gitlive.firebase.auth.auth
 import dev.gitlive.firebase.firestore.firestore
 import org.rg.data.domain.CustomerRepository
 import org.rg.shared.domain.Customer
-
 class CustomerRepositoryImpl : CustomerRepository {
 
+    override  fun getCurrentUserId(): String? {
+        return Firebase.auth.currentUser?.uid
+    }
 
     override suspend fun createCustomer(
         user: FirebaseUser?,

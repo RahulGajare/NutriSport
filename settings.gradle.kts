@@ -30,7 +30,9 @@ dependencyResolutionManagement {
 include(":data")
 include(":di")
 include(":feature:auth")
-include(":navigation")
+include(":feature:home")
+include(":feature:home")
+include(":feature:home")
 include(":navigation")
 
 include(":shared")

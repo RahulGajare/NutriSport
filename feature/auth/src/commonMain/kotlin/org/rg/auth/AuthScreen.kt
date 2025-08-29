@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,6 +26,8 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.mmk.kmpauth.firebase.google.GoogleButtonUiContainerFirebase
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinViewModel
 import org.rg.auth.component.GoogleButton
 import org.rg.shared.Alpha
@@ -33,8 +36,9 @@ import org.rg.shared.FontSize
 import rememberMessageBarState
 
 @Composable
-fun AuthScreen()
+fun AuthScreen(navigateToHome : () -> Unit)
 {
+    val scope = rememberCoroutineScope()
     val viewModel = koinViewModel<AuthViewModel>()
     var messageBarState = rememberMessageBarState()
     var loadingState by remember { mutableStateOf(false) }
@@ -86,7 +90,12 @@ fun AuthScreen()
                         loadingState = false
                         result.onSuccess { user ->
 
-                            messageBarState.addSuccess("Authentecation Successful")
+                            scope.launch {
+                                messageBarState.addSuccess("Authentication Successful")
+                                delay(200)
+                                navigateToHome()
+                            }
+
 
 
                         }.onFailure {error->

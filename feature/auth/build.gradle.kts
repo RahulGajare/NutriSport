@@ -66,7 +66,6 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
 
-
     }
 
     compileOptions {
@@ -74,5 +73,3 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 }
-
-
