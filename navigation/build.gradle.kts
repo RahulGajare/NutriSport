@@ -46,6 +46,7 @@ kotlin {
             implementation(libs.kotlinx.serialization)
 
             implementation(project(":feature:auth"))
+            implementation(project(":feature:home"))
             implementation(project(path = ":shared"))
         }
         commonTest.dependencies {

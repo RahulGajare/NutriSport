@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.rg.auth.AuthScreen
+import org.rg.home.HomeGraphScreen
 import org.rg.shared.navigation.Screen
 
 
@@ -25,7 +26,7 @@ fun SetupNavGraph(startDestination : Screen =  Screen.AuthScreen){
             }
 
             composable<Screen.HomeGraph> {
-
+                HomeGraphScreen()
             }
         }
 
